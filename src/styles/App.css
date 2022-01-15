@@ -2,6 +2,14 @@
     text-align: center;
 }
 
+.container {
+    display: flex;
+}
+
+.containerPagina {
+    width: 33%;
+}
+
 .boton {
     border-radius: 10px;
     margin-inline: 5px;

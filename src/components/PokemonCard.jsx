@@ -1,9 +1,10 @@
 import React from 'react'
 import  '../styles/PokemonCard.css'
+import { publicURL } from '..'
 
 export function PokemonCard({ id, name, types, urlImage }) {
     const obtenerImg = (type) => {
-        return `${window.origin}/pokemon/assets/types/${type}.png`
+        return `${window.origin}${publicURL}/assets/types/${type}.png`
     }
 
     return (

@@ -1,9 +1,15 @@
 import React, { Fragment, useState, useRef } from 'react'
+import { Login } from './components/Login'
+import { Logout } from './components/Logout'
+import { Profile } from './components/Profile'
 import { PokemonCard } from './components/PokemonCard'
 import { llamadaDatosPokemon } from './services/clienteApi'
 import './styles/App.css'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export function App() {
+    const { isAuthenticated } = useAuth0();
+
     const [ pokemon, setPokemon ] = useState()
 
     const [ errorMessage, setErrorMessage ] = useState()
@@ -60,20 +66,33 @@ export function App() {
 
     return (
         <Fragment>
-            <h1 className={'titulo'}>Pokédex</h1>
-            <div className={'centrarContenido'}>
-                <input onKeyPress={handleKeyPress} ref={searchRef} placeholder='Nombre o número pokédex' type="text"></input>
-            </div>
-            <div className={'centrarContenido'}>
-                <button className={'boton botonDefault'} onClick={handleCleanSearch}>Limpiar</button>
-                <button className={'boton botonDefault'} onClick={handleSearchClick}>Buscar</button>
-                <button className={shiny ? 'boton botonShiny' : 'boton botonDefault'} onClick={handleChangeShiny}>Shiny</button>
-            </div>
-            <div className={'centrarContenido'}>
-                {pokemon ? <PokemonCard {...pokemon} urlImage={shiny ? pokemon.urlImageShiny : pokemon.urlImageDefault}></PokemonCard> : 
-                errorMessage ? 
-                <div className={'divAlerta error'}>{errorMessage}</div> : 
-                <div className={'divAlerta info'}>¡Empieza a buscar tu Pokemon favorito!</div>}
+            <div className={'container'}>
+                <div className={'containerPagina'}>
+                    {!isAuthenticated ?
+                        <Login></Login> :
+                        <Fragment>
+                            <Profile></Profile> 
+                            <Logout></Logout>
+                        </Fragment>
+                    }
+                </div>
+                <div className={'containerPagina'}>
+                    <h1 className={'titulo'}>Pokédex</h1>
+                    <div className={'centrarContenido'}>
+                        <input onKeyPress={handleKeyPress} ref={searchRef} placeholder='Nombre o número pokédex' type="text"></input>
+                    </div>
+                    <div className={'centrarContenido'}>
+                        <button className={'boton botonDefault'} onClick={handleCleanSearch}>Limpiar</button>
+                        <button className={'boton botonDefault'} onClick={handleSearchClick}>Buscar</button>
+                        <button className={shiny ? 'boton botonShiny' : 'boton botonDefault'} onClick={handleChangeShiny}>Shiny</button>
+                    </div>
+                    <div className={'centrarContenido'}>
+                        {pokemon ? <PokemonCard {...pokemon} urlImage={shiny ? pokemon.urlImageShiny : pokemon.urlImageDefault}></PokemonCard> : 
+                        errorMessage ? 
+                        <div className={'divAlerta error'}>{errorMessage}</div> : 
+                        <div className={'divAlerta info'}>¡Empieza a buscar tu Pokemon favorito!</div>}
+                    </div>
+                </div>
             </div>
         </Fragment>
     )
