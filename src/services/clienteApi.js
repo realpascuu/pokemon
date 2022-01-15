@@ -5,6 +5,6 @@ export async function llamadaDatosPokemon(busqueda) {
         .then(async(result) => {
             return await result.json()
         }).catch((error) => {
-            return { message: `El Pokemon ${busqueda} no existe` }
+            return { message: `¡El Pokemon ${busqueda} no existe!` }
         })
 }

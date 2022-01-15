@@ -3,13 +3,29 @@
 }
 
 .boton {
-    background-color: rgba(198, 198, 198, 0.502);
-    border: 2px solid rgba(198, 198, 198, 0.502);
     border-radius: 10px;
     margin-inline: 5px;
+    padding: 5px;
+    padding-inline: 10px;
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.585);
 }
 
-.boton:hover {
+.botonDefault {
+    background-color: rgba(198, 198, 198, 0.502);
+    border: 2px solid rgba(198, 198, 198, 0.502);
+}
+
+.botonDefault:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.botonShiny {
+    background-color: rgba(255, 217, 0, 0.55);
+    border: 2px solid gold;
+}
+
+.botonShiny:hover {
     cursor: pointer;
     background-color: white;
 }
@@ -24,6 +40,7 @@
     padding: 2em;
     border-radius: 10px;
     border: 1px solid black;
+    text-align: center;
 }
 
 .info {
@@ -34,4 +51,10 @@
 .error {
     background-color: rgba(240, 62, 62, 0.468);
     border-color: red;
+}
+
+input {
+    padding: 5px;
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.585);
+    border: 1px solid rgba(128, 128, 128, 0.667);
 }

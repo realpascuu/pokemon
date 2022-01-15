@@ -8,6 +8,8 @@ export function App() {
 
     const [ errorMessage, setErrorMessage ] = useState()
 
+    const [ shiny, setShiny ] = useState(false)
+
     const searchRef = useRef()
 
     const handleCleanSearch = () => {
@@ -26,19 +28,22 @@ export function App() {
         const newSearch = await llamadaDatosPokemon(searchRef.current.value.toLocaleLowerCase())
 
         searchRef.current.value = ''
-        
+
         if(newSearch.message){
             setErrorMessage(newSearch.message)
             if(pokemon)
                 setPokemon()
         } else {
-            if(!pokemon || pokemon.id !== newSearch.id)
-                setPokemon({
+            if(!pokemon || pokemon.id !== newSearch.id){
+                const newPokemon = {
                     id: newSearch?.id,
                     name: newSearch?.name,
                     types: newSearch?.types,
-                    urlImage: newSearch?.sprites?.front_default
-                })
+                    urlImageDefault: newSearch?.sprites?.front_default,
+                    urlImageShiny: newSearch?.sprites?.front_shiny
+                }
+                setPokemon(newPokemon)
+            }
             if(errorMessage)
                 setErrorMessage()
         }
@@ -49,6 +54,10 @@ export function App() {
             handleSearchClick()
     }
 
+    const handleChangeShiny = () => {
+        setShiny(!shiny)
+    }
+
     return (
         <Fragment>
             <h1 className={'titulo'}>Pokédex</h1>
@@ -56,11 +65,12 @@ export function App() {
                 <input onKeyPress={handleKeyPress} ref={searchRef} placeholder='Nombre o número pokédex' type="text"></input>
             </div>
             <div className={'centrarContenido'}>
-                <button className={'boton'} onClick={handleSearchClick}>Buscar</button>
-                <button className={'boton'} onClick={handleCleanSearch}>Limpiar</button>
+                <button className={'boton botonDefault'} onClick={handleCleanSearch}>Limpiar</button>
+                <button className={'boton botonDefault'} onClick={handleSearchClick}>Buscar</button>
+                <button className={shiny ? 'boton botonShiny' : 'boton botonDefault'} onClick={handleChangeShiny}>Shiny</button>
             </div>
             <div className={'centrarContenido'}>
-                {pokemon ? <PokemonCard {...pokemon}></PokemonCard> : 
+                {pokemon ? <PokemonCard {...pokemon} urlImage={shiny ? pokemon.urlImageShiny : pokemon.urlImageDefault}></PokemonCard> : 
                 errorMessage ? 
                 <div className={'divAlerta error'}>{errorMessage}</div> : 
                 <div className={'divAlerta info'}>¡Empieza a buscar tu Pokemon favorito!</div>}
