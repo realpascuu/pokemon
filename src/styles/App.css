@@ -1,0 +1,37 @@
+.titulo {
+    text-align: center;
+}
+
+.boton {
+    background-color: rgba(198, 198, 198, 0.502);
+    border: 2px solid rgba(198, 198, 198, 0.502);
+    border-radius: 10px;
+    margin-inline: 5px;
+}
+
+.boton:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.centrarContenido {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.divAlerta {
+    padding: 2em;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.info {
+    background-color: rgba(65, 147, 218, 0.448);
+    border-color: rgb(65, 147, 218);
+}
+
+.error {
+    background-color: rgba(240, 62, 62, 0.468);
+    border-color: red;
+}

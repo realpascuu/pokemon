@@ -1,5 +1,5 @@
 import React from 'react'
-import {containerPoke, containerTypes, imgPokeStyle, tituloStyle, imgTypeStyle } from '../styles/PokemonCard'
+import  '../styles/PokemonCard.css'
 
 export function PokemonCard({ id, urlImage, name, types }) {
     const obtenerImg = (type) => {
@@ -7,12 +7,13 @@ export function PokemonCard({ id, urlImage, name, types }) {
     }
 
     return (
-        <div style={containerPoke}>
-            <h2 style={tituloStyle}>{name}</h2>
-            <img style={imgPokeStyle} src={urlImage} alt={name}></img>
-            <div style={containerTypes}>
+        <div className={'containerPoke'}>
+            <h2 className={'tituloStyle'}>{name}</h2>
+            <h2 className='tituloStyle'>{id}</h2>
+            <img className={'imgPokeStyle'} src={urlImage} alt={name}></img>
+            <div className={'containerTypes'}>
             {
-                types.map((element) => <img style={imgTypeStyle} key={element.type.name} src={obtenerImg(element.type.name)} alt={`${element.type.name} `}></img>)
+                types.map((element) => <img className={'imgTypeStyle'} key={element.type.name} src={obtenerImg(element.type.name)} alt={`${element.type.name} `}></img>)
             }
             </div>
         </div>

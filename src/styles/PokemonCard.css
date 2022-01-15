@@ -1,0 +1,31 @@
+.tituloStyle {
+    text-transform: capitalize;
+    text-align: center;
+    font-family: "Gill Sans Extrabold", Helvetica, sans-serif
+}
+
+.imgTypeStyle {
+    height: 52px;
+    width: 42px;
+    margin-right: 5px
+}
+
+.imgPokeStyle {
+    width: 100%;
+}
+
+.containerTypes {
+    width: 200px;
+    display: flex;
+    justify-content: center
+}
+
+.containerPoke {
+    width: 200px;
+    border: 0.05em solid grey;
+    margin: 5px;
+    box-shadow: 5px 5px 15px grey;
+    padding-bottom: 1em;
+    border-radius: 5px;
+    background-color: rgba(218, 217, 217, 0.55);
+}
