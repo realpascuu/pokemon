@@ -1,13 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
 .titulo {
     text-align: center;
 }
 
-.container {
-    display: flex;
+.container::after {
+    content: "";
+    clear: both;
+    display: block;
 }
 
-.containerPagina {
-    width: 33%;
+[class*="col-"] {
+    float: left;
+    padding: 15px;
 }
 
 .boton {
@@ -65,4 +72,14 @@ input {
     padding: 5px;
     box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.585);
     border: 1px solid rgba(128, 128, 128, 0.667);
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+@media only screen and (max-width: 800px) {
+    [class*="col-"] {
+        width: 100%;
+    }
 }

@@ -67,7 +67,7 @@ export function App() {
     return (
         <Fragment>
             <div className={'container'}>
-                <div className={'containerPagina'}>
+                <div className={'col-4'}>
                     {!isAuthenticated ?
                         <Login></Login> :
                         <Fragment>
@@ -76,7 +76,7 @@ export function App() {
                         </Fragment>
                     }
                 </div>
-                <div className={'containerPagina'}>
+                <div className={'col-4'}>
                     <h1 className={'titulo'}>Pokédex</h1>
                     <div className={'centrarContenido'}>
                         <input onKeyPress={handleKeyPress} ref={searchRef} placeholder='Nombre o número pokédex' type="text"></input>
