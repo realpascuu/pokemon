@@ -6,9 +6,10 @@ import '../styles/Profile.css'
 export function Profile() {
     const { user, isAuthenticated, isLoading } = useAuth0();
     
-    if (isLoading)
+    if (isLoading){
         return <div>Loading...</div>
-    
+    }
+
     return (
         isAuthenticated && (
             <div>
