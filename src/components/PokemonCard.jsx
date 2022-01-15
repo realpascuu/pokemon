@@ -3,7 +3,10 @@ import {containerPoke, containerTypes, imgPokeStyle, tituloStyle, imgTypeStyle }
 
 export function PokemonCard({ id, urlImage, name, types }) {
     const obtenerImg = (type) => {
-        return `/assets/types/${type}.png`
+        if(window.location.href.endsWith('/'))
+            return `${window.location.href}assets/types/${type}.png`
+        else 
+        return `${window.location.href}/assets/types/${type}.png`
     }
 
     return (
